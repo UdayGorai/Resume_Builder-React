@@ -7,7 +7,7 @@ const Footer = () => {
     
     <div className="flex items-center justify-center gap-3 py-3">
       <img src={Logo} className="w-16 h-auto object-contain whitespace-norap" alt="" />
-      <p>Resume Builder</p>
+      <p>Resumo</p>
     </div>
 
     <div className="flex items-center justify-center gap-6">

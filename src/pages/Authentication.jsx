@@ -10,7 +10,10 @@ const Authentication = () => {
   return (
     <div className='auth-section'>
         {/* top sectiom */}
-        <img src={Logo} className="w-20 h-auto object-contain" alt="" />
+        <div className="flex items-center justify-center gap-3 py-3">
+          <img src={Logo} className="w-16 h-auto object-contain whitespace-norap" alt="" />
+          <p>Resumo</p>
+        </div>
         {/* Main Secion */}
         <div className='w-full flex flex-1 flex-col items-center justify-center gap-6'>
             <h1 className="text-3xl lg:text-4xl text-blue-500">Welcome to Resume Builder</h1>

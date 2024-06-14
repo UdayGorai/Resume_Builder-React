@@ -6,6 +6,7 @@ import { AuthButtonWithProvider } from '../components';
 // importing GoogleAuth,GithubAuth from fa6 of react icons
 import { FaGoogle , FaGithub } from "react-icons/fa6";
 
+
 const Authentication = () => {
   return (
     <div className='auth-section'>
@@ -25,6 +26,7 @@ const Authentication = () => {
                 <AuthButtonWithProvider Icon={FaGithub} label={"Signin with GitHub"} provider={"GithubAuthProvider"} />
             </div>
         </div>
+
         
         {/* footer Section */}
         <Footer/>

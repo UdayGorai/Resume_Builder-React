@@ -1,13 +1,25 @@
-import React from 'react';
-import{Logo} from '../assets';
+import React, { useEffect } from 'react';
+import { Logo } from '../assets';
 import { Footer } from '../containers';
 import { AuthButtonWithProvider } from '../components';
 
 // importing GoogleAuth,GithubAuth from fa6 of react icons
 import { FaGoogle , FaGithub } from "react-icons/fa6";
+import useUser from '../hooks/useUser';
+import { useNavigate } from 'react-router-dom';
 
 
 const Authentication = () => {
+  const {data , isLoading , isError } = useUser();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!isLoading && data ){
+      navigate("/", {replace: true});
+    }
+  } ,[isLoading , data]) 
+  
   return (
     <div className='auth-section'>
         {/* top sectiom */}

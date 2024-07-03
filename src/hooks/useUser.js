@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
+import { getUserDetail } from "../api";
 
 
 const useUser = () => {
@@ -14,6 +15,10 @@ const useUser = () => {
                     toast.err("Something went wrong...")
                 }
             }
-        }
-    ) 
-}
+        },
+        { refetchOnWindowFocu: false }
+    );
+    return {data , isLoading , isError , refetch}
+};
+
+export default useUser;

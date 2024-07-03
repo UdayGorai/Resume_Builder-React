@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Logo } from '../assets';
 import { Footer } from '../containers';
-import { AuthButtonWithProvider } from '../components';
+import { AuthButtonWithProvider, MainSpinner } from '../components';
 
 // importing GoogleAuth,GithubAuth from fa6 of react icons
 import { FaGoogle , FaGithub } from "react-icons/fa6";
@@ -18,8 +18,12 @@ const Authentication = () => {
     if(!isLoading && data ){
       navigate("/", {replace: true});
     }
-  } ,[isLoading , data]) 
+  } ,[isLoading , data]); 
   
+  if(isLoading){
+    return <MainSpinner />;
+  }
+
   return (
     <div className='auth-section'>
         {/* top sectiom */}

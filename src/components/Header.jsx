@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../assets';
 import { AnimatePresence, motion } from "framer-motion";
 import { GridLoader, SquareLoader } from 'react-spinners';
+import { HiLogout } from "react-icons/hi";
 
 const Header = () => {
     const {data , isLoading , isError } = useUser();
@@ -29,15 +30,51 @@ const Header = () => {
                 ): (
                     <React.Fragment>
                         {data ? (
-                            <motion.div >
+                            <motion.div className=' relative'>
                                 {data ?.photoURL ? (
                                     <div className=' w-12 h-12 rounded-md relative flex items-center justify-between'>
                                         <img src={data ?.photoURL} className='w-full h-full object-cover rounded-md' referrerPolicy='no-referrer' alt="" />
                                     </div>
                                 ) : (
                                     <div className=' w-12 h-12 rounded-md relative flex items-center justify-between bg-blue-500 shadow-md'>
+                                        <p className='text-lg text-white'>{data?.email[0]}</p>
                                     </div>
                                 )}
+
+                                {/* dropdown menu */}
+                                <AnimatePresence>
+                                    <motion.div className=' absolute px-4 py-3 rounded-md bg-white right-0 top-14 flex flex-col items-center justify-start gap-3 w-64 pt-12'>
+                                        {data ?.photoURL ? (
+                                            <div className=' w-16 h-16 rounded-full relative flex items-center justify-between flex-col'>
+                                                <img src={data ?.photoURL} className='w-full h-full object-cover rounded-md' referrerPolicy='no-referrer' alt=""/>
+                                            </div>
+                                        ) : (
+                                            <div className=' w-16 h-16 rounded-full relative flex items-center justify-between bg-blue-500 shadow-md'>
+                                                <p className='text-lg text-txtDark'>{data?.email[0]}</p>
+                                            </div>
+                                        )}
+                                        
+                                        {data?.displayName && (
+                                            <p className='text-lg text-white'>{data?.displayName}</p>
+                                        )}
+
+                                        {/* menus */}
+                                        <div className=' w-full flex-col items-start flex gap-8 pt-6'>
+                                            <Link className=' text-txtLight hover:text-txtDark text-base whitespace-nowrap'>
+                                            My Account
+                                            </Link>
+                                            <Link className=' text-txtLight hover:text-txtDark text-base whitespace-nowrap'>
+                                            Add New TemplateclassName 
+                                            </Link>
+
+                                            <div className=' w-full px-2 py-2 border-t border-gray-300 flex items-center justify-between group cursor-pointer'>
+                                                <p className=' group-hover:text-txtDark text-txtLight'>Sign Out</p>
+                                                <HiLogout className=' group-hover:text-txtDark text-txtLight'/>
+                                            </div>
+                                        </div>
+
+                                    </motion.div>
+                                </AnimatePresence>
                             </motion.div>
                         ) : (
                             <Link to={"/auth"}>
